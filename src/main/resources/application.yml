@@ -2,28 +2,38 @@ server:
   port: 8081
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/eyedaero
-    username: root
-    password: 1234
-# url:
-#    driver-class-name: org.postgresql.Driver
+#        url: jdbc:mysql://localhost:3306/eyedaero
+#        username: root
+#        password: "0304"
+    url: ENC(tiPjbzMvi7Yg+MNRwvp5Ple3gElM7nIKmersrCdomCMc7fHPsDIRG2KAtI4uRm3CM+NE1X7ZN6LCMQcm2gua4DhUXCVN6Z13JtwD1Nz1bDM9T0Ply8fCt+Lky5fcv1cZKsOJHFGH9MrjVNMyT+mawetR5si0XTAeOZ239Y/d1Gs=)
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         enable_lazy_load_no_trans: true
         show_sql: true
         format_sql: true
     open-in-view: false
+jwt:
+  secretKey: asdfasdfasfasdfasdfasdfasdfasdasdfasdfasdfasdf
+  accessExpiration: 300000
+  refreshExpiration: 600000
+  aesKey: C3BB60F2946E838CDC1A1357CB491E10
 
-#jwt:
-#  secretKey: wpdlejqmfdbxl
-#  accessExpiration: 300000
-#  refreshExpiration: 600000
-#  aesKey: aesEncryptKeyeee
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD}
+
 #
-#jasypt:
-#  encryptor:
-#    password: ${JASYPT_ENCRYPTOR_PASSWORD}
+#cloud:
+#  aws:
+#    s3:
+#      bucket: ${storage_name}
+#    stack.auto: false
+#    region.static: ap-northeast-2
+#    credentials:
+#      accessKey: ${storage_access_key}
+#      secretKey: ${storage_secret_key}

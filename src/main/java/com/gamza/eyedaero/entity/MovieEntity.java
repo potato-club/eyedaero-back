@@ -1,24 +1,26 @@
 package com.gamza.eyedaero.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.List;
 
 @Entity
 @RequiredArgsConstructor
 @Table
 @Getter
-public class SeatEntity {
-
+public class MovieEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_id")
+    @Column(name = "movie_id")
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "theaterRoom")
+    private TheaterRoomEntity theaterRoom;
+
     @Column
-    private Boolean kind;//좌석0 , 1, null
+    private String name;
 
 }
