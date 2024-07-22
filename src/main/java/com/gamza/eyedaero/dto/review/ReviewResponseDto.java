@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ReviewResponseDto {
     private final Long reviewId;
+    private final String userEmail;
     private final String contents;
     private final int recommendCount;
     private final LocalDateTime createAt;

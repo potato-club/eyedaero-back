@@ -19,8 +19,8 @@ spring:
     open-in-view: false
 jwt:
   secretKey: asdfasdfasfasdfasdfasdfasdfasdasdfasdfasdfasdf
-  accessExpiration: 300000
-  refreshExpiration: 600000
+  accessExpiration: 3000000000
+  refreshExpiration: 6000000000
   aesKey: C3BB60F2946E838CDC1A1357CB491E10
 
 jasypt:

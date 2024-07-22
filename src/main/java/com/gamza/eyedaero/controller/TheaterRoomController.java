@@ -20,7 +20,7 @@ public class TheaterRoomController {
 
     private final TheaterRoomService theaterRoomService;
 
-    @PostMapping("/info/{theaterRoomId}")
+    @GetMapping("/info/{theaterRoomId}")
     @Operation(summary = "상영관 정보(리뷰 수, 별점)")
     public ResponseEntity<TheaterRoomInfoResponseDto> viewTheaterRoomInfo(@PathVariable Long theaterRoomId, HttpServletRequest request) {
         TheaterRoomInfoResponseDto result = theaterRoomService.viewTheaterRoomInfo(theaterRoomId, request);
