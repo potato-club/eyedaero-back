@@ -23,8 +23,8 @@ public class RecommendEntity {
     @JoinColumn(name = "review_id")
     private ReviewEntity review;
 
-//    public RecommendationEntity(UserEntity user, ReviewEntity review) {
-//        this.user = user;
-//        this.review = review;
-//    }
+    public RecommendEntity(UserEntity user, ReviewEntity review) {
+        this.user = user;
+        this.review = review;
+    }
 }

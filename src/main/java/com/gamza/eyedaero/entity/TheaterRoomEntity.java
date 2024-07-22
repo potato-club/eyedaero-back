@@ -38,11 +38,14 @@ public class TheaterRoomEntity {
     private float rate;
 
     @Column(nullable = false)
-    private int ReviewCount;
+    private int reviewCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "major")
     private AreaMajorEntity areaMajorEntity;
 
+    public void incrementReviewCount() {
+        this.reviewCount++;
+    }
 
 }

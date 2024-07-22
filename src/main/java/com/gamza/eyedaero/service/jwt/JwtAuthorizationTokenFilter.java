@@ -70,10 +70,10 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
             errorCode = ErrorJwtCode.INVALID_VALUE;
             setResponse(response, errorCode);
             return;
-        } catch (RuntimeException e) {
-            errorCode = ErrorJwtCode.RUNTIME_EXCEPTION;
-            setResponse(response, errorCode);
-            return;
+//        } catch (RuntimeException e) {
+//            errorCode = ErrorJwtCode.RUNTIME_EXCEPTION;
+//            setResponse(response, errorCode);
+//            return;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
