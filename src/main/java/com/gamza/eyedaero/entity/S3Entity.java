@@ -4,21 +4,22 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
 
 @Entity
 @RequiredArgsConstructor
 @Table
 @Getter
-public class SeatEntity {
+public class S3Entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_id")
     private Long id;
 
-    @Column
-    private Boolean kind;//좌석0 , 1, null
+    @Column(nullable = false)
+    private String url;
+
+    @Column(unique = true, nullable = false)
+    private String fileName;
 
 }
