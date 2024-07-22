@@ -135,11 +135,11 @@ public class JwtTokenProvider {
     }
 
     public void setHeaderAccessToken(HttpServletResponse response, String accessToken) {
-        response.setHeader("AT", accessToken);
+        response.setHeader("Authorization", accessToken);
     }
 
     public void setHeaderRefreshToken(HttpServletResponse response, String refreshToken) {
-        response.setHeader("RT", refreshToken);
+        response.setHeader("refreshToken", refreshToken);
     }
 
     public UsernamePasswordAuthenticationToken getAuthentication(String token) {
@@ -170,16 +170,16 @@ public class JwtTokenProvider {
     }
 
     public String resolveAccessToken(HttpServletRequest request) {
-        String authorizationHeader = request.getHeader("AT");
-        if(request.getHeader("AT") != null && extractTokenType(authorizationHeader).equals("access")) {
+        String authorizationHeader = request.getHeader("Authorization");
+        if(request.getHeader("Authorization") != null && extractTokenType(authorizationHeader).equals("access")) {
             return authorizationHeader;
         }
         return null;
     }
 
     public String resolveRefreshToken(HttpServletRequest request) {
-        String authorizationHeader = request.getHeader("RT");
-        if(request.getHeader("RT") != null && extractTokenType(authorizationHeader).equals("refresh")) {
+        String authorizationHeader = request.getHeader("refreshToken");
+        if(request.getHeader("refreshToken") != null && extractTokenType(authorizationHeader).equals("refresh")) {
             return authorizationHeader;
         }
         return null;
