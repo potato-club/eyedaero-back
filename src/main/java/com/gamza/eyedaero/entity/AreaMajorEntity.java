@@ -23,6 +23,6 @@ public class AreaMajorEntity {
     private String name;
 
     @OneToMany(mappedBy = "areaMajorEntity")
-    private List<AreaSubEntity> subs = new ArrayList<>();
+    private List<TheaterRoomEntity> theaterRooms;
 
 }

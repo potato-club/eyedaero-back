@@ -28,6 +28,9 @@ public class TheaterRoomEntity {
     @JoinColumn(name = "theater")
     private TheaterEntity theater;
 
+    @OneToMany(mappedBy = "theaterRoom", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovieEntity> movies;
+
     @Column(nullable = false)
     private int seatCount;
 
@@ -36,6 +39,10 @@ public class TheaterRoomEntity {
 
     @Column(nullable = false)
     private int ReviewCount;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "major")
+    private AreaMajorEntity areaMajorEntity;
 
 
 }
