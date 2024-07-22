@@ -20,7 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -74,11 +76,11 @@ public class ReviewService {
                 .orElseThrow(() -> new NotFoundException("해당 상영관이 없습니다.", ErrorCode.NOT_FOUND_EXCEPTION));
 
         return theaterRoom.getReviews().stream()
+                .sorted(Comparator.comparing(ReviewEntity::getCreateAt).reversed())
                 .map(ReviewListResponseDto::new)
                 .collect(Collectors.toList());
     }
 
-    @Transactional
     public void reviewRecommend(Long reviewId, HttpServletRequest request) {
         String token = jwtTokenProvider.resolveAccessToken(request);
         Long userId = jwtTokenProvider.extractId(token);
@@ -88,10 +90,18 @@ public class ReviewService {
         ReviewEntity review = reviewRepository.findById(reviewId)
                 .orElseThrow(() -> new NotFoundException("Review not found", ErrorCode.NOT_FOUND_EXCEPTION));
 
-        RecommendEntity recommend = new RecommendEntity(user, review);
-        recommendRepository.save(recommend);
+        Optional<RecommendEntity> recommendEntityOptional = recommendRepository.findByUserAndReview(user, review);
 
-        review.setRecommendations(review.getRecommendations() + 1);
+        if (recommendEntityOptional.isPresent()) {
+            RecommendEntity recommendEntity = recommendEntityOptional.get();
+            recommendRepository.delete(recommendEntity);
+            review.setRecommendations(review.getRecommendations() - 1);
+        } else {
+            RecommendEntity recommend = new RecommendEntity(user, review);
+            recommendRepository.save(recommend);
+            review.setRecommendations(review.getRecommendations() + 1);
+        }
+
         reviewRepository.save(review);
     }
 }
