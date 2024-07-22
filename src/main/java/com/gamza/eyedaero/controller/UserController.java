@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
-@Tag(name = "User Controller", description = "User API")
+@Tag(name = "사용자 Controller", description = "User API")
 public class UserController {
 
     private final UserService userService;
@@ -36,5 +36,6 @@ public class UserController {
         userService.regist(requestDto);
         return ResponseEntity.ok().body("회원가입 완료");
     }
+
 
 }

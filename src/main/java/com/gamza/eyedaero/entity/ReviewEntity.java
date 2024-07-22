@@ -2,15 +2,21 @@ package com.gamza.eyedaero.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Table
 @Getter
+@Builder
 public class ReviewEntity {
 
     @Id
@@ -33,7 +39,10 @@ public class ReviewEntity {
     private String content;
 
     @Column
-    private int rate;
+    private float rate;
+
+    @Column
+    private LocalDateTime createAt;
 
 //    public RecommendationEntity(UserEntity user, ReviewEntity review) {
 //        this.user = user;

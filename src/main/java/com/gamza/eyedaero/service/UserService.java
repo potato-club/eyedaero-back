@@ -33,20 +33,16 @@ public class UserService {
     public void login(LoginRequestDto dto, HttpServletResponse response) {
 
 
-        System.out.println("login 1");
         if(!userRepository.existsByEmail(dto.getEmail())) {
             throw new UnAuthorizedException("L401-1", ErrorCode.NOT_FOUND_EXCEPTION);
         }
 
-        System.out.println("login 2");
         UserEntity user = userRepository.findByEmail(dto.getEmail()).orElseThrow();
 
-        System.out.println("login 3");
         if(!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
             throw new UnAuthorizedException("L401-2", ErrorCode.NOT_FOUND_EXCEPTION);
         }
 
-        System.out.println("login 4");
         setTokenInHeader(dto.getEmail(), response);
     }
 
@@ -67,18 +63,14 @@ public class UserService {
 
 
     public void setTokenInHeader(String  email, HttpServletResponse response) {
-        System.out.println("log 5");
         UserEntity user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new NotFoundException("5003", ErrorCode.NOT_ALLOW_WRITE_EXCEPTION));
 
-        System.out.println("log 6");
         UserRole role = user.getUserRole();
 
-        System.out.println("log 7");
         String accessToken = jwtTokenProvider.createAccessToken(user.getId(), role);
         String refreshToken = jwtTokenProvider.createRefreshToken(user.getId(), role);
 
-        System.out.println("log 8");
         jwtTokenProvider.setHeaderAccessToken(response, accessToken);
         jwtTokenProvider.setHeaderRefreshToken(response, refreshToken);
     }
