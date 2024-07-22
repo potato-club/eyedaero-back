@@ -25,4 +25,6 @@ public class TheaterEntity {
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TheaterRoomEntity> theaterRooms;
+
+
 }
