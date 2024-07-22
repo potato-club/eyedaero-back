@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -18,5 +21,8 @@ public class AreaMajorEntity {
     private long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "areaMajorEntity")
+    private List<AreaSubEntity> subs = new ArrayList<>();
 
 }
