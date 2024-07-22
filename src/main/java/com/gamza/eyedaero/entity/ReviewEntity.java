@@ -10,6 +10,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @RequiredArgsConstructor
@@ -32,6 +33,9 @@ public class ReviewEntity {
     @JoinColumn(name = "theater_room_id")
     private TheaterRoomEntity theaterRoom;
 
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RecommendEntity> recommends;
+
     @Column(nullable = false)
     private int recommendations;
 
@@ -43,10 +47,8 @@ public class ReviewEntity {
 
     @Column
     private LocalDateTime createAt;
-
-//    public RecommendationEntity(UserEntity user, ReviewEntity review) {
-//        this.user = user;
-//        this.review = review;
-//    }
+    public void setRecommendations(int recommendations) {
+        this.recommendations = recommendations;
+    }
 
 }

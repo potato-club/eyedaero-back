@@ -2,11 +2,11 @@ server:
   port: 8081
 spring:
   datasource:
-    #    url: jdbc:mysql://localhost:3306/eyedaero
-    #    username: root
-    #    password: 1234
-    url: ENC(tiPjbzMvi7Yg+MNRwvp5Ple3gElM7nIKmersrCdomCMc7fHPsDIRG2KAtI4uRm3CM+NE1X7ZN6LCMQcm2gua4DhUXCVN6Z13JtwD1Nz1bDM9T0Ply8fCt+Lky5fcv1cZKsOJHFGH9MrjVNMyT+mawetR5si0XTAeOZ239Y/d1Gs=)
-    driver-class-name: org.postgresql.Driver
+        url: jdbc:mysql://localhost:3306/eyedaero
+        username: root
+        password: 1234
+#    url: ENC(tiPjbzMvi7Yg+MNRwvp5Ple3gElM7nIKmersrCdomCMc7fHPsDIRG2KAtI4uRm3CM+NE1X7ZN6LCMQcm2gua4DhUXCVN6Z13JtwD1Nz1bDM9T0Ply8fCt+Lky5fcv1cZKsOJHFGH9MrjVNMyT+mawetR5si0XTAeOZ239Y/d1Gs=)
+#    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
