@@ -42,6 +42,26 @@ dependencies {
     //s3
     implementation group: 'io.awspring.cloud', name: 'spring-cloud-starter-aws', version: '2.4.4'
 
+    implementation 'org.postgresql:postgresql:42.7.2'
+
+
+    // 자십트
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
+
+    // JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+
+    // 시큐리티
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JSON
+    implementation 'org.json:json:20231013'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+
 }
 
 tasks.named('test') {
