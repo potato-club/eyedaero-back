@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,6 +75,7 @@ public class ReviewService {
                 .orElseThrow(() -> new NotFoundException("해당 상영관이 없습니다.", ErrorCode.NOT_FOUND_EXCEPTION));
 
         return theaterRoom.getReviews().stream()
+                .sorted(Comparator.comparing(ReviewEntity::getCreateAt).reversed())
                 .map(ReviewListResponseDto::new)
                 .collect(Collectors.toList());
     }
