@@ -27,3 +27,14 @@ spring:
 #jasypt:
 #  encryptor:
 #    password: ${JASYPT_ENCRYPTOR_PASSWORD}
+
+#
+#cloud:
+#  aws:
+#    s3:
+#      bucket: ${storage_name}
+#    stack.auto: false
+#    region.static: ap-northeast-2
+#    credentials:
+#      accessKey: ${storage_access_key}
+#      secretKey: ${storage_secret_key}
