@@ -60,6 +60,7 @@ public class ReviewService {
 
         return ReviewResponseDto.builder()
                 .reviewId(savedReview.getId())
+                .userEmail(savedReview.getUser().getEmail())
                 .contents(savedReview.getContent())
                 .recommendCount(savedReview.getRecommendations())
                 .createAt(savedReview.getCreateAt())

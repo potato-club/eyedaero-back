@@ -28,7 +28,7 @@ public class TheaterRoomService {
                 .average()
                 .orElse(0.0);
 
-        return new TheaterRoomInfoResponseDto(reviewCount, averageRate);
+        return new TheaterRoomInfoResponseDto(theaterRoom.getTheater().getName(), theaterRoom.getId(), reviewCount, averageRate);
 
     }
 
