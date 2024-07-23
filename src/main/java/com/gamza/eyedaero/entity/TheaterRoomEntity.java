@@ -31,6 +31,9 @@ public class TheaterRoomEntity {
     @OneToMany(mappedBy = "theaterRoom", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MovieEntity> movies;
 
+    @OneToMany(mappedBy = "theaterRoom", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SeatEntity> seats;
+
     @Column(nullable = false)
     private int seatCount;
 
