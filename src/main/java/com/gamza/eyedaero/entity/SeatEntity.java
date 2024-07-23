@@ -1,11 +1,8 @@
 package com.gamza.eyedaero.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @RequiredArgsConstructor
@@ -19,6 +16,13 @@ public class SeatEntity {
     private Long id;
 
     @Column
-    private Boolean kind;//좌석0 , 1, null
+    private Boolean kind; //좌석0 , 1, null
+
+    @Column
+    private String seats;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "theaterRoom")
+    private TheaterRoomEntity theaterRoom;
 
 }
